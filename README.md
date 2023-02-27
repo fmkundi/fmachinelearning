@@ -4,6 +4,7 @@ This is a machine learning tool developed using Streamlit. The tool allows users
 ## Installation
 - Clone the repository
 - Install the necessary packages: pip install -r requirements.txt
+
 ## Usage
 Run the app: streamlit run MLMain
 Upload a file
