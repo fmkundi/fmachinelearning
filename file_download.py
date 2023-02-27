@@ -19,7 +19,10 @@ def download_file(pred,fname,model,task,accu_mse,ds):
     pred_df = format_download(pred)
     new_cols = pd.MultiIndex.from_tuples([('Dataset: '+str(ds),'Task: '+task,'Ytest_index'),('Model: '+model,'Date: '+str(date),'Ytest'),('Accuracy/MSE: '+str(accu_mse),' ','Ypred')])
     pred_df.columns = new_cols
-    fname = fname+".csv"
-    download_folder = os.path.join(os.path.expanduser('~'), 'Downloads')
-    csv_path = os.path.join(download_folder, fname)
-    pred_df.to_csv(csv_path, index=False)
+    csv_path = fname+'.csv'
+    fdata = pred_df.to_csv(index=False)
+    if(len(fdata)>0):
+        st.download_button(label='Download',
+        data=fdata,
+        file_name=csv_path,
+        mime='text/csv')
